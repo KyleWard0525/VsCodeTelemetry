@@ -4,6 +4,8 @@ This app runs as a background process external to VS Code and is NOT a VS Code e
 
 **NOTE:** The app must be run as an administrator to work properly
 
+![Powershell Output](images/v0.1DOS_commandOutput.PNG)
+
 ## Setup
 
 - Download/Clone the repository
