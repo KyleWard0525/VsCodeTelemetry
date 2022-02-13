@@ -1,5 +1,5 @@
 """
- This file is for the tracking operation of this application
+ This file is for the time tracking operations of this application
  
  kward
 """
@@ -44,7 +44,7 @@ class CodeTime:
         # Check if total time is an hour (3600s) or more
         if self.time_log["total_time"] >= 3600:
             # Convert total time to hours
-            self.time_log['total_hours'] = self.time_log["total_time"] / 3660.0
+            self.time_log['total_hours'] = self.time_log["total_time"] / 3600.0
             
             
         update = {}
