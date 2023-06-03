@@ -24,19 +24,24 @@ mongodb = pymongo.MongoClient("mongodb://localhost:27017/")
 # Select database
 db = mongodb.misc["VsCodeLog"]
 
+# Create process monitors
+procmon_vscode_std = ProcMonitor("Code.exe")
+procmon_vscode_insiders = ProcMonitor("Code - Insiders.exe")
 telem = VsCodeTelemetry(db)
 
 
-
 def main():   
-    proc = ProcMonitor("Code.exe")
     logging = False
     
     # Run forever
     while True:
-        # Check if program is running
-        if proc.isProcRunning() and not logging:
-            telem.startCodeTimeLog()
+        # Check if either vscode processes are running
+        # Give priority to vscode insiders by checking it first
+        if procmon_vscode_insiders.isProcRunning() and not logging:
+            telem.startCodeTimeLog(procmon_vscode_insiders)
+            logging = True
+        elif procmon_vscode_std.isProcRunning() and not logging:
+            telem.startCodeTimeLog(procmon_vscode_std)
             logging = True
         else:
             logging = False
