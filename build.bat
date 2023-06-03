@@ -41,7 +41,7 @@ if exist dist\vsct.exe (
 )
 
 :: If all builds were successful, move VsCodeTelemetry.exe to startup
-move /Y dist\VsCodeTelemetry.exe "%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+copy /Y dist\VsCodeTelemetry.exe "%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
 
 if exist "%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\VsCodeTelemetry.exe" (
     echo. && echo.
@@ -62,4 +62,3 @@ rmdir /S /Q build
 
 echo. && echo.
 echo Build complete!
-echo. && echo.
