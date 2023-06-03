@@ -12,15 +12,14 @@ class VsCodeTelemetry:
     
     def __init__(self, db):
         self.codeTime = CodeTime(db)
-        self.procmon = ProcMonitor("Code.exe")
-    
-    def startCodeTimeLog(self):
+
+    def startCodeTimeLog(self, procmon: ProcMonitor):
         # Start timer
         self.codeTime.start()
         
         # Monitor process
-        while self.procmon.monitor() != -1:
-            if not self.procmon.isProcRunning():
+        while procmon.monitor() != -1:
+            if not procmon.isProcRunning():
                 break
         
         # Stop timer and save session time to the db
