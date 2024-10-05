@@ -37,7 +37,7 @@ def format_output():
     \t\tVS Code Telemetry:
     {"-"*linelen}\n
     
-    Total time spent in VS Code: {metrics["total_hours"]} hours
+    Total time spent in VS Code: {round(metrics["total_hours"], 2)} hours
     
     Since: {metrics['start_timestamp']}
     """
