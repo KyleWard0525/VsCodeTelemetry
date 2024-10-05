@@ -21,14 +21,7 @@ def get_metrics():
     """
     Query VS Code metrics from the db
     """    
-    
-    time_metrics = db.find_one({"name" : "CodeTime"})
-    
-    return {
-        "total_time" : time_metrics["total_time"],
-        "total_hours" : time_metrics["total_hours"]
-    }
-
+    return db.find_one({"name" : "CodeTime"})
 
 def format_output():
     """
@@ -46,6 +39,7 @@ def format_output():
     
     Total time spent in VS Code: {metrics["total_hours"]} hours
     
+    Since: {metrics['start_timestamp']}
     """
                 
     return output
